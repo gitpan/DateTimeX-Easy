@@ -1,0 +1,19 @@
+---
+name: DateTimeX-Easy
+version: 0.04
+author:
+  - 'Robert Krimen, C<< <rkrimen at cpan.org> >>'
+abstract: Use ::F::Flexible and ::F::Natural for quick and easy DateTime creation
+license: perl
+resources:
+  license: http://dev.perl.org/licenses/
+build_requires:
+  Test::More: 0
+provides:
+  DateTimeX::Easy:
+    file: lib/DateTimeX/Easy.pm
+    version: 0.04
+generated_by: Module::Build version 0.2806
+meta-spec:
+  url: http://module-build.sourceforge.net/META-spec-v1.2.html
+  version: 1.2
