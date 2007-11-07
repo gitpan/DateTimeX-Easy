@@ -9,11 +9,11 @@ DateTimeX::Easy - Use ::F::Flexible and ::F::Natural for quick and easy DateTime
 
 =head1 VERSION
 
-Version 0.04
+Version 0.042
 
 =cut
 
-our $VERSION = '0.04';
+our $VERSION = '0.042';
 
 =head1 SYNOPSIS
 
