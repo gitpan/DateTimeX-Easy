@@ -115,4 +115,12 @@ is($dt, "2007-01-01T20:22:01");
     is($eg->time_zone->name, "PST8PDT");
     is("$eg", "2007-07-01T19:32:10");
 
+    $eg = DateTimeX::Easy->parse($dt, time_zone => "PST8PDT", convert => 1); # Will ALSO use "US/Pacific" as the timezone WITH conversion
+    is($eg->time_zone->name, "PST8PDT");
+    is("$eg", "2007-07-01T19:32:10");
+
+        $eg = DateTimeX::Easy->parse($dt, time_zone => "floating", convert => 1);
+        is($eg->time_zone->name, "floating");
+        is("$eg", "2007-07-01T22:32:10");
+
 }
