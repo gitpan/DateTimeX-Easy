@@ -3,8 +3,16 @@
 use strict;
 use warnings;
 
-use Test::More qw/no_plan/;
+use Test::Most;
+
+plan qw/no_plan/;
+
 use DateTimeX::Easy qw/parse_datetime datetime/;
+
+{
+    my $dt = DateTimeX::Easy->parse("Mon Mar 17, 2008 4:14 pm");
+    is($dt, "2008-03-17T16:14:00");
+}
 
 my $local_time_zone;
 eval {
@@ -174,7 +182,7 @@ is($dt->time_zone->name, "floating");
     is($eg->time_zone->name, "PST8PDT");
     is("$eg", "2007-07-01T19:32:10");
 
-        $eg = DateTimeX::Easy->parse($dt, time_zone => "floating");
-        is($eg->time_zone->name, "floating");
-        is("$eg", "2007-07-01T22:32:10");
+    $eg = DateTimeX::Easy->parse($dt, time_zone => "floating");
+    is($eg->time_zone->name, "floating");
+    is("$eg", "2007-07-01T22:32:10");
 }
