@@ -26,4 +26,4 @@ requires:
 resources:
   license: http://dev.perl.org/licenses/
   repository: http://github.com/robertkrimen/datetimex-easy/tree/master
-version: 0.084
+version: 0.085
