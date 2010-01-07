@@ -8,7 +8,7 @@ build_requires:
 configure_requires:
   ExtUtils::MakeMaker: 6.42
 distribution_type: module
-generated_by: 'Module::Install version 0.87'
+generated_by: 'Module::Install version 0.91'
 license: perl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
@@ -19,14 +19,15 @@ no_index:
     - inc
     - t
 requires:
+  Date::Parse: 0
   DateTime: 0
   DateTime::Format::DateManip: 0
-  DateTime::Format::DateParse: 0
   DateTime::Format::Flexible: 0
   DateTime::Format::ICal: 0
   DateTime::Format::Natural: 0
   Scalar::Util: 0
+  Time::Zone: 0
 resources:
   license: http://dev.perl.org/licenses/
   repository: http://github.com/robertkrimen/datetimex-easy/tree/master
-version: 0.087
+version: 0.088

@@ -11,11 +11,11 @@ DateTimeX::Easy - Parse a date/time string using the best method available
 
 =head1 VERSION
 
-Version 0.087
+Version 0.088
 
 =cut
 
-our $VERSION = '0.087';
+our $VERSION = '0.088';
 
 =head1 SYNOPSIS
 
