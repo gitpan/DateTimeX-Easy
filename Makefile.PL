@@ -1,46 +1,59 @@
-use inc::Module::Install;
 
-name 'DateTimeX-Easy';
-all_from 'lib/DateTimeX/Easy.pm';
+use strict;
+use warnings;
 
-resources repository => 'http://github.com/robertkrimen/datetimex-easy/tree/master';
 
-{
-    require ExtUtils::MakeMaker;
-    use strict;
-    no strict 'refs';
 
-    my $libscan = \&{"ExtUtils::MM_Any::libscan"};
-    *{"ExtUtils::MM_Any::libscan"} = sub {
-        return '' unless $libscan->(@_);
-        return '' if $_[1] =~ /\.sw[p-z]$/;
-        return $_[1];
-    };
+use ExtUtils::MakeMaker 6.31;
+
+
+
+my %WriteMakefileArgs = (
+                       'test' => {
+                                   'TESTS' => 't/*.t'
+                                 },
+                       'NAME' => 'DateTimeX::Easy',
+                       'DISTNAME' => 'DateTimeX-Easy',
+                       'CONFIGURE_REQUIRES' => {
+                                                 'ExtUtils::MakeMaker' => '6.31'
+                                               },
+                       'AUTHOR' => 'Robert Krimen <robertkrimen@gmail.com>',
+                       'BUILD_REQUIRES' => {
+                                             'Test::Most' => '0'
+                                           },
+                       'ABSTRACT' => 'Parse a date/time string using the best method available',
+                       'EXE_FILES' => [],
+                       'VERSION' => '0.087_1',
+                       'PREREQ_PM' => {
+                                        'Scalar::Util' => '0',
+                                        'DateTime::Format::Flexible' => '0',
+                                        'DateTime' => '0',
+                                        'DateTime::Format::Natural' => '0',
+                                        'DateTime::Format::ICal' => '0',
+                                        'Time::Zone' => '0',
+                                        'Date::Parse' => '0'
+                                      },
+                       'LICENSE' => 'perl'
+                     );
+
+
+unless ( eval { ExtUtils::MakeMaker->VERSION(6.56) } ) {
+  my $br = delete $WriteMakefileArgs{BUILD_REQUIRES};
+  my $pp = $WriteMakefileArgs{PREREQ_PM}; 
+  for my $mod ( keys %$br ) {
+    if ( exists $pp->{$mod} ) {
+      $pp->{$mod} = $br->{$mod} if $br->{$mod} > $pp->{$mod}; 
+    }
+    else {
+      $pp->{$mod} = $br->{$mod};
+    }
+  }
 }
 
-{
-    map { my ($pk, $vr) = split m/\s/; build_requires $pk => $vr || 0 } grep { ! /^\s*#/ } split m/\n/, <<_END_;
-Test::Most
-_END_
+delete $WriteMakefileArgs{CONFIGURE_REQUIRES}
+  unless eval { ExtUtils::MakeMaker->VERSION(6.52) };
 
-    map { my ($pk, $vr) = split m/\s/; requires $pk => $vr || 0 } grep { ! /^\s*#/ } split m/\n/, <<_END_;
-Date::Parse
-Time::Zone
-DateTime
-DateTime::Format::Natural
-DateTime::Format::Flexible
-DateTime::Format::ICal
-DateTime::Format::DateManip
-Scalar::Util
-_END_
-}
+WriteMakefile(%WriteMakefileArgs);
 
-if (-e 'inc/.author') {
-    my $all_from = join '/', 'lib', split m/-/, name . '.pm';
-    `perldoc -tF $all_from > README` if ! -e 'README' || (stat $all_from)[9] > (stat 'README')[9];
-}
 
-auto_install;
-
-WriteAll;
 
