@@ -1,6 +1,6 @@
 package DateTimeX::Easy;
 BEGIN {
-  $DateTimeX::Easy::VERSION = '0.087_1';
+  $DateTimeX::Easy::VERSION = '0.088_1';
 }
 # ABSTRACT: Parse a date/time string using the best method available
 
@@ -307,7 +307,7 @@ DateTimeX::Easy - Parse a date/time string using the best method available
 
 =head1 VERSION
 
-version 0.087_1
+version 0.088_1
 
 =head1 SYNOPSIS
 
