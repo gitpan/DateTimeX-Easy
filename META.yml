@@ -21,4 +21,4 @@ requires:
   DateTime::Format::Natural: 0
   Scalar::Util: 0
   Time::Zone: 0
-version: 0.088_1
+version: 0.089

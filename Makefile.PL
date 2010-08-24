@@ -23,7 +23,7 @@ my %WriteMakefileArgs = (
                                            },
                        'ABSTRACT' => 'Parse a date/time string using the best method available',
                        'EXE_FILES' => [],
-                       'VERSION' => '0.088_1',
+                       'VERSION' => '0.089',
                        'PREREQ_PM' => {
                                         'Scalar::Util' => '0',
                                         'DateTime::Format::Flexible' => '0',
